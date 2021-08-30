@@ -1,0 +1,387 @@
+@font-face {
+    font-family : 'NotoSans' ;
+    src : url(../font/NotoSansCJKkr-Regular) ;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+a:link, a:visited {
+    color: black;
+    text-decoration: none;
+}
+#container {
+    width: 100%;
+    margin: auto;
+    background-image: url(../image/art6.jpg);
+    background-repeat: no-repeat;
+    /* background-size: 100% 100%; */
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#menubox {
+    width: 30px;
+    height: 100px;
+    position: fixed;
+    right: 15px;
+    z-index: 99;
+}
+#menubox:hover #sidemenubarbase {
+    right: -160px;
+}
+#menubox:hover #sidemenubar {
+    right: 0px;
+}
+#sidemenubar>a:hover>div:first-child {
+    background-color: rgb(170,103,16);
+}
+#sidemenubar>a:hover>div>div {
+    background-color: rgb(60,37,23);
+}
+
+/* 기본 사이드 메뉴바 */
+#sidemenubarbase {
+    width: 20px;
+    height: 100px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: 20px;
+    top: 100px;
+    border-radius: 50px;
+    background-color: rgb(60,37,23);
+    transition: 0.8s all;
+    z-index: 99;
+}
+#sidemenubarbase div {
+    width: 5px;
+    height: 5px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: rgb(247,225,202);
+}
+
+/* 호버 시 사이드 메뉴 바 */
+#sidemenubar {
+    width: 160px;
+    position: fixed;
+    right: -160px;
+    top: 100px;
+    transition: 0.8s all;
+}
+#sidemenubar>a:first-child>div {
+    border-radius: 10px 0px 0px 0px;
+}
+#sidemenubar>a:last-child>div {
+    border-radius: 0px 0px 0px 10px;
+}
+#sidemenubar>a>div:first-child {
+    width: 100%;
+    height: 35px;
+    padding-top: 6px;
+    background-color: rgb(60,37,23);
+    display: flex;
+}
+#sidemenubar div div {
+    width: 10px;
+    height: 10px;
+    margin: 6px 8px 0px 8px;
+    border-radius: 50%;
+    background-color: rgb(247,225,202);
+}
+#sidemenubar p {
+    color: white;
+}
+/* 헤더 시작 */
+header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    background-color: white;
+    position: fixed;
+    z-index: 99;
+    padding: 0px 10px 0px 10px;
+    transition: all 0.7s;
+}
+@media screen and (min-width : 2000px) {
+    #container {
+        width: 2000px;
+    }
+    header {
+        width: 2000px;
+    }
+    .productContainer {
+        height : 600px ;
+    }
+}
+@media screen and (min-width : 1250px) {
+    .productContainer {
+        height : 380px ;
+    }
+}
+@media screen and (min-width : 1000px) {
+    .productContainer {
+        height : 330px ;
+    }
+}
+.headbox1 {
+    width: 33%;
+    display: flex;
+    padding-top: 13px;
+}
+.headbox1 p {
+    padding: 0px 10px 0px 10px;
+    font-size: 0.8em;
+}
+.headbox1>a:nth-child(2) p {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.headbox2 {
+    width: 34%;
+    text-align: center;
+    padding-top: 8px;
+}
+.headbox2 p {
+    font-weight: bolder;
+}
+.headbox2 span {
+    font-size: 0.7em;
+}
+.headbox3 {
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 13px;
+}
+.headbox3 p {
+    padding: 0px 10px 0px 10px;
+    font-size: 0.8em;
+}
+.headbox3 a:nth-child(2) p {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.headbox1, .headbox3 {
+    margin-top: 7px;
+}
+#searchbox {
+    display: flex;
+    height: 25px;
+    border-bottom: 1px solid black;
+    margin: 0px 10px 0px 10px;
+}
+#searchbox button {
+    width: 15px;
+    height: 15px;
+    margin-top: 3px;
+    background-color: transparent;
+    border: 0px;
+    opacity: 0.8;
+}
+#searchbox input {
+    width: 80px;
+    height: 20px;
+    border: 0px;
+}
+button img {
+    width: 100%;
+    height: 100%;
+}
+/* 헤더 끝 */
+/* 섹션 시작 */
+section {
+    width: 100%;
+    padding-top: 60px;
+}
+/* 1번 아티클 main사진 */
+.art1 {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    background-color: #1e1412;
+    /* overflow: hidden; */
+}
+.art1 img {
+    /* width: 25.6%; */
+    height: 70%;
+    position: relative;
+    top: 0px;
+}
+/* 2번 아티클 ABOUT */
+.art2 {
+    width: 100%;
+    display: flex;
+    padding-left: 150px;
+    background-color: white;
+}
+.art2 video {
+    width: 45%;
+}
+.art2 div {
+    width: 50%;
+    text-align: center;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.art2 div img {
+    width: 40px;
+    height: 33px;
+}
+.art2 div img:last-child { /* 아래따옴표 회전 */
+    transform: rotateZ(180deg);
+}
+
+/* 3~5번 아티클 */
+.art3, .art4, .art5 {
+    width : 100% ;
+    height : 100% ;
+    background-color : white ;
+    text-align : center ;
+    /* padding : 12% 12.5% 9.5% 11% ; */
+}
+.productContainer {
+    width : 75.5% ;
+    /* height : 600px ; */
+    margin : auto ;
+    /* margin-left : 150px ; */
+}
+.product {
+    width : 100% ;
+    height : 100% ;
+}
+.product div { 
+    float : left ; 
+    background-repeat : no-repeat ;
+    background-size : contain ;
+    background-position : center ;
+}
+.product>div:not(.productText) {
+    cursor: pointer ;
+}
+.productBest {
+    width : 30% ;
+    height : 100% ;
+    margin-right : 2% ;
+}
+.productText {
+    width : 60% ;
+    height : 60% ;
+    margin-left : 3.5% ;
+    padding : 2% 4% ;
+}
+.productText div:first-child {
+    font-size : 2em ;
+    font-weight : bold ;
+}
+.productText div:nth-child(2) {
+    margin : 2% 0% ;
+}
+.productText a {
+    text-decoration : none ;
+    color : #AA6710 ;
+}
+.productOthers {
+    width : 12% ;
+    height : 40% ;
+    margin-left : 3.5% ;
+}
+::after .art4 {
+    clear : both ;
+}
+
+/* 6번 아티클 contact us */
+.art6 {
+    width: 100%;
+    position: relative;
+}
+.art6>p { /* FRITZ THE BEST CHOISE OF YOUR COFFEE LIFE */
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    font-size: 2em;
+    color: white;
+    font-weight: bolder;
+    text-shadow: 5px 5px 5px black;
+}
+.art6>p span { /* FRITZ */
+    font-size: 1.7em;
+    font-weight: bolder;
+    color: rgb(197,136,56);
+}
+/* .art6 img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+} */
+.art6>div { /* 푸터 묶음 상자 */
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+.art6>div>div:first-child { /* 푸터 큰 상자 */
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    position: relative;
+    background-color: rgba(214,193,172,0.5);
+}
+.art6>div>div:first-child div { /* 푸터 큰 상자 안의 3개 상자 */
+    width: 33.33%;
+    text-align: center;
+}
+.art6 div div div:first-child h3+p { /* 푸터 큰 상자 안의 h3 */
+    font-weight: bolder;
+}
+.art6 h3~p:last-child {
+    width: 200px;
+    text-align: left;
+    margin: auto;
+}
+
+.art6>div>div:first-child div:nth-child(2) { /* 운영시간 박스 */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    line-height: 25px;
+}
+.art6>div>div:first-child div:nth-child(3) { /* wholesale 박스 */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.art6>div>div:last-child { /* 푸터 작은 박스 */
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+.art6 div div div p {
+    font-size: 0.8em;
+}
+.point {
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+.named {
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+#wholesale {
+    width: 140px;
+    padding: 8px 0px 8px 0px;
+    margin: auto;
+    background-color: rgb(95,81,73);
+    color: white;
+    border-radius: 10px;
+    font-size: 0.8em;
+}
+#wholesalebox {
+    width: 100%;
+}
