@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+        <link rel="stylesheet" href="css/fritz0827.css" type="text/css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>
+			FRITZ
+		</title>
+		<script src="js/jquery.js"></script>
+		<script>
+			$(function() {
+                // 아티클 사용자 화면크기 비례 높이
+                var x = $(window).height();
+                $("article").css("height",x);
+
+                var mainimgheight = $("#mainimg").height();
+                $("#mainimg").css("top",(x/2)-(mainimgheight/2));
+
+                // 사이드메뉴 위치 지정
+                var y = $("#sidemenubar").height();
+                $("#sidemenubar").css("top",(x/2)-(y/2));
+
+                // 사이드메뉴 베이스 위치 지정
+                var z = $("#sidemenubarbase").height();
+                $("#sidemenubarbase").css("top",(x/2)-(z/2));
+
+                var a = $("#menubox").height();
+                $("#menubox").css("top",(x/2)-(a/2));
+
+			});
+
+            function hideshow(e) {
+                if ( e.wheelDelta < 0 ) {
+                    document.querySelector("header").style.top = "-60px";
+                }
+                else {
+                    document.querySelector("header").style.top = "0px";
+                }
+            }
+
+
+            // 상품 article 썸네일 자동입력
+            function inputs() {
+                var subject = ["single", "blended", "coldbrew"] ;
+
+                var num = 0 ;
+                var index ;
+
+                while(num < subject.length) {
+                    for (index = 1 ; index <= 5 ; index++) {
+                        var kind = subject[num] ;
+                        var selector = "#"+kind+index ;
+
+                        var urlText = "url(image/product/bg-"+kind+".png), url(image/product/"+kind+index+".png)" ;
+
+                        document.querySelector(selector).style.backgroundImage = urlText ;
+                    }
+                    num++ ;
+                }
+            }
+            // 박스 팝업 이벤트
+
+            function boxUnerBottom(evnt, startevent) {
+                var top = evnt.getBoundingClientRect().top;
+                var innerHeight = window.innerHeight;
+                return top > innerHeight + (startevent || 0);
+            }
+
+            function scrollEvent() {
+                var elmt = document.querySelectorAll(".scrollevnt");
+                elmt.forEach(function(evnt){
+                    if(boxUnerBottom(evnt, -30)) {
+                        evnt.style.opacity = "0";
+                        evnt.style.transform = "translateY(80px)";
+                    }
+                    else {
+                        evnt.style.opacity = "1";
+                        evnt.style.transform = "translateY(0px)";
+                    }
+                });
+            }
+            window.addEventListener("scroll",scrollEvent);
+		</script>
+	</head>
+	<body onwheel = "hideshow(event);">
+        <div id="menubox">
+            <div id="sidemenubarbase">
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <div id="sidemenubar"> <!-- 사이드 메뉴 -->
+                <a href="#">
+                    <div>
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            MAIN
+                        </p>
+                    </div>
+                </a>
+                <a href="Fritz -0827M.html#about">
+                    <div>
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            ABOUT
+                        </p>
+                    </div>
+                </a>
+                <a href="Fritz -0827M.html#singleorigin">
+                    <div>
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            SHOP
+                        </p>
+                    </div>
+                </a>
+                <a href="Fritz -0827M.html#wholesale">
+                    <div>
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            WHOLESALE
+                        </p>
+                    </div>
+                </a>
+                <a href="Fritz -0827M.html#contactus">
+                    <div>
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            CONTACT US
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="container">
+            <header>
+                <div class="headbox1">
+                    <a href="#"><p>facebook</p></a>
+                    <a href="#"><p>instargram</p></a>
+                    <a href="#"><p>kakaopage</p></a>
+                </div>
+                <div class="headbox2">
+                    <p><a href="Main -0826M.html">FRITZ COMPANY<br><span>COFFEE & BREAD</span></a></p>
+                </div>
+                <div class="headbox3">
+                    <a href="login.html"><p>log in</p></a>
+                    <a href="#"><p>sign in</p></a>
+                    <div id="searchbox">
+                        <input type="text" placeholder="search">
+                        <button>
+                            <img src="image/search.png" alt="사진" id="find">
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <section>
+                <article class="art1"> <!--1번째 아티클 사진-->
+                    <img src="image/maincoffee.jpg" alt="사진" id="mainimg">
+                </article>
+                <article class="art2"> <!--2번째 아티클 ABOUT-->
+                    <video src="multi/main.mp4" autoplay muted>
+
+                    </video>
+                    <div class="scrollevnt">
+                        <img src="image/EKdhavy.png" alt="사진"><br>
+                        <p>당신의 여유로운 한 잔이<br>보다 고급질 수 있게</p><br>
+                        <img src="image/EKdhavy.png" alt="사진">
+                    </div>
+                </article>
+                <article class="art3"> <!--3번째 아티클 SINGLE ORIGIN-->
+                    <div class="productContainer">
+                        <div class="product scrollevnt">
+                            <div class="productBest" id="single1" onclick="location.href='#';"></div>
+                            <div class="productText">
+                                <div>SINGLE ORIGIN</div>
+                                <div>고급 품종의 단일 원두만을 사용하여 각 원두 고유의 개성을 그대로 느낄 수 있습니다. 고급 품종의 단일 원두만을 사용하여 각 원두 고유의 개성을 그대로 느낄 수 있습니다.</div>
+                                <div><a href="Fritz -0827M.html#singleorigin">View more</a></div>
+                            </div>
+                            <div class="productOthers" id="single2"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="single3"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="single4"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="single5"  onclick="location.href='#';"></div>
+                        </div>
+                    </div>
+                </article>
+                <article class="art4"> <!--4번째 아티클 BLENDED-->
+                    <div class="productContainer">
+                        <div class="product scrollevnt">
+                            <div class="productBest" id="blended1" onclick="location.href='#';"></div>
+                            <div class="productText">
+                                <div>BLENDED</div>
+                                <div>각 나라, 지역에서 생산된 원두의 특성을 조합하여 프리츠만의 특색있는 풍미를 제공합니다. 각 나라, 지역에서 생산된 원두의 특성을 조합하여 프리츠만의 특색있는 풍미를 제공합니다.</div>
+                                <div><a href="Fritz -0827M.html#blended">View more</a></div>
+                            </div>
+                            <div class="productOthers" id="blended2"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="blended3"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="blended4"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="blended5"  onclick="location.href='#';"></div>
+                        </div>
+                    </div>
+                </article>
+                <article class="art5"> <!--5번째 아티클 COLD BREW-->
+                    <div class="productContainer">
+                        <div class="product scrollevnt">
+                            <div class="productBest" id="coldbrew1" onclick="location.href='#';"></div>
+                            <div class="productText">
+                                <div>COLD BREW</div>
+                                <div>찬물로 장시간 추출하여 쓴맛이 보다 적고 부드러우며 원두 고유의 맛과 향을 느낄 수 있습니다. 찬물로 장시간 추출하여 쓴맛이 보다 적고 부드러우며 원두 고유의 맛과 향을 느낄 수 있습니다.</div>
+                                <div><a href="Fritz -0827M.html#coldbrew">View more</a></div>
+                            </div>
+                            <div class="productOthers" id="coldbrew2"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="coldbrew3"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="coldbrew4"  onclick="location.href='#';"></div>
+                            <div class="productOthers" id="coldbrew5"  onclick="location.href='#';"></div>
+                        </div>
+                    </div>
+                    <script>
+                        inputs() ;
+                    </script>
+                </article>
+                <article class="art6 scrollevnt"> <!--6번째 아티클 contact us-->
+                    <!-- <img src="image/art6.jpg" alt="사진"> -->
+                    <p><span>FRITZ</span><br>THE BEST CHOICE<br>OF YOUR COFFEE LIFE</p>
+                    <div>
+                        <div>
+                            <div>
+                                <h3 class="named">FRITZ COMPANY</h3>    
+                                <p class="named">COFFEE & BREAD</p><br>
+                                <p>서울시 성동구 행당동 123<br>02) 1234 - 5678<br>FRITZ@FRITZ.co.kr<br>사업자등록번호 : 123-321-12345<br>대표 : 소지섭</p>
+                            </div>
+                            <div>
+                                <p><span class="named">카페 운영시간</span><br>OPEN : 07 : 30 | CLOSE : 22 : 00</p>
+                                <p><span class="named">배송안내</span><br>금요일 11시 이전 주문건에 한해 당일 배송합니다.</p>
+                            </div>
+                            <div>
+                                <h3 class="named">WHOLESALE</h3>
+                                <p>프리츠가 당신의 사업 발전을 응원합니다.<br>프리츠커피 도매에 관한 정보가 궁금하시면<br>WHOLESALE 페이지에 문의해 보세요.</p>
+                                <div id="wholesalebox">
+                                    <button id="wholesale">
+                                        WHOLESALE 문의
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Copyrights@All Rights Reserved by Fritz</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+	</body>
+</html>
