@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/fritz0827M.css">
+  <title> Fritz Coffee </title>
+  <script src="js/jquery.js"></script>
+  <script>
+
+$(function() {
+      $("#slidebtn").click(function(){
+        if (!$("#slide").is(":animated")) {
+          $("#slide").slideToggle(500);
+        }
+      });
+
+      var height = $(window).height();
+      var nav_height = (height-61);
+      $(".nav").css("height",nav_height+"px");
+      $(".content").css("height",(nav_height - 50)+"px");
+      $(".article").css("height",(nav_height - 50)+"px");
+
+      $(".nav ul li").click(function () {
+        $(".nav ul li").removeClass();
+        $(this).addClass("on");
+        $(".listnav li div").removeClass();
+      });
+      $(".nav ul li a").click(function () {        
+        window.scrollTo(0, 0);
+      });
+      $(".listnav li div").click(function () {
+        $(".listnav li div").removeClass();
+        $(this).addClass("on");
+      });
+
+    });
+    
+  $(function() {
+    $(".productlist").click(function() {
+      $(".listnav").show() ;
+    });
+  });
+  
+  $(function() {
+    $("a").not(".productlist").click(function() {
+      $(".listnav").hide() ;
+    });
+  });
+  
+  </script>
+</head>
+<body>
+  <div id="container">
+
+  <header>
+
+    <div class="headbox1">
+
+        <a href="#"><p>Facebook</p></a>
+        <a href="#"><p>Instargram</p></a>
+        <a href="#"><p>Kakaopage</p></a>
+    </div>
+
+    <div class="headbox2">
+
+        <p><a href="Main -0826M.html">FRITZ COMPANY<br><span>COFFEE & BREAD</span></a></p>
+    </div>
+
+    <div class="headbox3">
+        <a href="login.html"><p>Log in</p></a>
+        <a href="login.html"><p>Sign in</p></a>
+        <div id="searchbox">
+            <input type="text" placeholder="search">
+            <button>
+                <img src="image/search.png" alt="사진" id="find">
+            </button>
+        </div>
+    </div>
+</header>
+
+
+    <div class="nav">
+      <ul>
+        <li> <div class="listtype"></div> <a href="Main -0826M.html"> Main </a> </li>
+        <li> <div class="listtype"></div> <a href="#about"> About </a> </li>
+        <li id="slidebtn"> <div class="listtype"></div> <a href="#singleorigin"> Shop </a> </li>
+          <ul id="slide">
+            <li> <div class="listtype"></div> <a href="#singleorigin" class="productlist"> Single Origin </a> </li>
+            <li> <div class="listtype"></div> <a href="#blended" class="productlist"> Blended </a> </li>
+            <li> <div class="listtype"></div> <a href="#coldbrew" class="productlist"> Cold Brew </a> </li>
+          </ul>
+          <li> <div class="listtype"></div> <a href="#wholesale"> WholeSale </a> </li>
+          <li> <div class="listtype"></div> <a href="#contactus"> Contact Us </a> </li>
+      </ul>
+    </div>
+
+
+    <div class="content">
+      <article>
+
+        <section id="about">
+          <h2>ABOUT</h2>
+        </section>
+
+
+        <section id="singleorigin">
+          <h2> SINGLE ORIGIN </h2>
+            <div class="productlist">
+              <div>
+                <img src="image/product/Single1.png" alt="Single1">
+                <p onMouseOver="this.innerHTML='콜롬비아수프리모'" onMouseOut="this.innerHTML='Colombia Supremo Tolima'">
+                Colombia Supremo </p> <span> 12,500 원 </span> 
+              </div>
+              <div>
+                <img src="image/product/Single2.png" alt="Single2">
+                <p onMouseOver="this.innerHTML='브라질 산토스 NY2 FC'" onMouseOut="this.innerHTML='Brazil Santos NY2 FC'">
+                  Brazil Santos NY2 FC </p> <span> 9,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Single3.png" alt="Single3">
+                <p onMouseOver="this.innerHTML='브라질 세라도 FC'" onMouseOut="this.innerHTML='Brazil Cerrado FC'">
+                  Brazil Cerrado FC </p> <span> 11,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Single4.png" alt="Single4">
+                <p onMouseOver="this.innerHTML='에티오피아 시다모 G2'" onMouseOut="this.innerHTML='Ethiopia Sidamo G2'">
+                  Ethiopia Sidamo G2 </p> <span> 16,000 원 </span>
+              </div>
+              <div >
+                <img src="image/product/Single5.png" alt="Single5">
+                <p onMouseOver="this.innerHTML='케냐 오타야 AA'" onMouseOut="this.innerHTML='Kenya Othaya AA'">
+                  Kenya Othaya AA </p> <span> 17,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Single6.png" alt="Single6">
+                <p onMouseOver="this.innerHTML='에티오피아 예가체프 G2'" onMouseOut="this.innerHTML='Ethiopia Yirgacheffe G2'">
+                  Ethiopia Yirgacheffe G2 </p> <span> 15,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Single1.png" alt="Single1">
+                <p onMouseOver="this.innerHTML='인도네시아 만델링 G1'" onMouseOut="this.innerHTML='Indonesia Mandheling G1'">
+                  Indonesia Mandheling G1 </p> <span> 17,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Single2.png" alt="Single1">
+                <p onMouseOver="this.innerHTML='에티오피아 코케허니 G1'" onMouseOut="this.innerHTML='Ethiopia Koke Honey G1'">
+                  Ethiopia Koke Honey G1 </p> <span> 14,000 원 </span>
+              </div>
+            </div>
+        </section>
+
+        <section id="blended">
+          <h2> BLENDED </h2>
+            <div class="productlist">
+              <div>
+                <img src="image/product/Blended1.png" alt="Blended1">
+                <p onMouseOver="this.innerHTML='에스프레소 블렌드'" onMouseOut="this.innerHTML='Epsresso Blend'">
+                  Epsresso Blend </p> <span> 22,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Blended2.png" alt="Blended2">
+                <p onMouseOver="this.innerHTML='프릳츠 블렌드'" onMouseOut="this.innerHTML='Fritz Blend'">
+                  Fritz Blend </p> <span> 23,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Blended3.png" alt="Blended3">
+                <p onMouseOver="this.innerHTML='더치 블렌드'" onMouseOut="this.innerHTML='Dutch Blend'">
+                  Dutch Blend </p> <span> 23,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Blended4.png" alt="Blended4">
+                <p onMouseOver="this.innerHTML='다크 블렌드'" onMouseOut="this.innerHTML='Dark Blend'">
+                  Dark Blend </p> <span> 22,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Blended5.png" alt="Blended5">
+                <p onMouseOver="this.innerHTML='마일드 블렌드'" onMouseOut="this.innerHTML='Mild Blend'">
+                  Mild Blend </p> <span> 22,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Blended6.png" alt="Blended6">
+                <p onMouseOver="this.innerHTML='디카페인 블렌드'" onMouseOut="this.innerHTML='Decaf Blend'">
+                  Decaf Blend </p> <span> 23,000 원</span>
+              </div>
+              <div>
+                <img src="image/product/Blended1.png" alt="Blended1">
+                <p onMouseOver="this.innerHTML='아로마 블렌드'" onMouseOut="this.innerHTML='Aroma Blend'">
+                  Aroma Blend </p> <span> 21,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Blended2.png" alt="Blended2">
+                <p onMouseOver="this.innerHTML='스모키 블렌드'" onMouseOut="this.innerHTML='Smoky Blend'">
+                  Smoky Blend </p> <span> 22,000 원 </span>
+              </div>
+            </div>
+        </section>
+
+        <section id="coldbrew">
+          <h2> COLD BREW </h2>
+            <div class="productlist">
+              <div>
+                <img src="image/product/Coldbrew1.png" alt="coldbrew1">
+                <p onMouseOver="this.innerHTML='콜롬비아 수프리모'" onMouseOut="this.innerHTML='Colombia Supremo Tolima'">
+                  Colombia Supremo </p> <span> 11,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Coldbrew2.png" alt="coldbrew2">
+                <p onMouseOver="this.innerHTML='브라질 산토스 NY2 FC'" onMouseOut="this.innerHTML='Brazil Santos NY2 FC'">
+                  Brazil Santos NY2 FC </p> <span> 9,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Coldbrew3.png" alt="coldbrew3">
+                <p onMouseOver="this.innerHTML='브라질 세하도 FC'" onMouseOut="this.innerHTML='Brazil Cerrado FC'">
+                  Brazil Cerrado FC </p> <span> 11,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Coldbrew4.png" alt="coldbrew4">
+                <p onMouseOver="this.innerHTML='에티오피아 시다모 G2'" onMouseOut="this.innerHTML='Ethiopia Sidamo G2'">
+                  Ethiopia Sidamo G2 </p> <span> 16,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Coldbrew5.png" alt="coldbrew5">
+                <p onMouseOver="this.innerHTML='케냐 오타야 AA'" onMouseOut="this.innerHTML='Kenya Othaya AA'">
+                  Kenya Othaya AA </p> <span> 17,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Coldbrew6.png" alt="coldbrew6">
+                <p onMouseOver="this.innerHTML='에티오피아 예가체프 G2'" onMouseOut="this.innerHTML='Ethiopia Yirgacheffe G2'">
+                  Ethiopia Yirgacheffe G2 </p> <span> 15,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Coldbrew1.png" alt="coldbrew1">
+                <p onMouseOver="this.innerHTML='인도네시아 만델링 G1'" onMouseOut="this.innerHTML='Indonesia Mandheling G1'">
+                  Indonesia Mandheling G1 </p> <span> 17,000 원 </span>
+              </div>
+              <div>
+                <img src="image/product/Coldbrew2.png" alt="coldbrew2">
+                <p onMouseOver="this.innerHTML='에티오피아 코케허니 G1'" onMouseOut="this.innerHTML='Ethiopia Koke Honey G1'">
+                  Ethiopia Koke Honey G1 </p> <span> 14,000 원 </span>
+              </div>
+            </div>
+        </section>
+
+        <section id="wholesale">
+          <div class="whContainer">
+            <div>
+              <div class="whText">
+                <div>WHOLESALE</div>
+                <div>
+                  FRITZ의 원두를 대량 구매하시려면 아래로 문의 주세요<br>
+                  상담 후 무료 샘플과 안내문을 보내 드립니다.
+                </div>
+              </div>
+              <div class="form">
+                <table>
+                  <tr>
+                    <td><label for="companyName">상호명</label></td>
+                    <td><input type="text" id="shopName" value="  성함이나 상호명을 입력해 주세요." size="30"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="companyRegNum">사업자 번호</label></td>
+                    <td><input type="text" id="companyRegNum" value="  사업자 번호를 입력해 주세요." size="30"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="companyEtc">기타 사항</label></td>
+                    <td><input type="text" id="companyEtc" value="  문의하실 내용을 입력해 주세요.">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td><td><input type="submit" value="SEND"></td>
+                  </tr>
+                </table>
+                
+              </div>
+            </div>
+            <div></div>
+            <div><img src="img/tel.png" alt="tel" width="40px"></div>
+            <div>
+              <p>전화 / 문자 문의<br>010-1234-5678</p>
+            </div>
+            <div><img src="img/mail.png" alt="email" height="40px"></div>
+            <div>
+              Email 문의<br>FRITZ@fritz.co.kr
+              
+            </div>
+          </div>
+        </section>
+        <section id="contactus">
+          <h2>CONTACT US</h2>  
+        </section>
+      </article>
+      
+      <ul class="listnav">
+        <li><div><a href="#"> prev </a></div></li>
+        <li><div><a href="#"> 1 </a></div></li>
+        <li><div><a href="#"> 2 </a></div></li>
+        <li><div><a href="#"> 3 </a></div></li>
+        <li><div><a href="#"> next </a></div></li>
+      </ul>
+      
+    </div>
+
+</body>
+</html>
