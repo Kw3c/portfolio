@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <link rel="stylesheet" href="css/fritzshop.css">
+    <link rel="shortcut icon" href="image/coffeecon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+        FRITZ_SHOP
+    </title>
+    <script src="js/jquery.js"></script>
+    <script>
+
+        $(function () {
+            // 좌측 메뉴바 on / off
+            var flag = true;
+            $("#hide>div").eq(0).click(function () {
+                if (!($("#hide").is(":animated")))
+                    if (flag) {
+                        flag = false;
+                        $("#hide").animate({
+                            "height": "180px"
+                        }, 700);
+
+                        $(this).css("backgroundColor", "#aa6710");
+                        $(".none").css("backgroundColor", "#3c2517");
+                    }
+                    else {
+                        flag = true;
+                        $("#hide").animate({
+                            "height": "45px"
+                        }, 700);
+
+                        $(this).css("backgroundColor", "transparent");
+                        $(".none").css("backgroundColor", "#f7e1ea");
+                    }
+            });
+
+            var windowHeight = $(window).height();
+            var windowWidth = $(window).width();
+            var containHeight = $("#container").height();
+            $("#container").css("height", windowHeight);
+
+            if (windowWidth > 2000) {
+                $(".changeAbout>div>div").eq(1).css("fontSize", "2.8em");
+                $(".name").css("fontSize", "2em");
+                $(".wholesale>div").eq(0).css("fontSize", "3em");
+                $(".wholesale>div").eq(1).css("fontSize", "1.5em");
+            }
+            else {
+                $(".changeAbout>div>div").eq(1).css("fontSize", "2.5vw");
+                $(".name").css("fontSize", "1.5vw");
+                $(".wholesale>div").eq(0).css("fontSize", "2.5vw");
+                $(".wholesale>div").eq(1).css("fontSize", "1vw");
+            }
+
+            if (windowWidth < 1000) {
+                $(".name").css("fontSize", "1.2em");
+            }
+            var secHeight = $("section").height();
+            var headHeight = $("header").height();
+            var footHeight = $("footer").height();
+            $("section").css("height", (secHeight - headHeight - footHeight));
+
+            var changebox = $(".changeAbout").height();
+            var artiFoot = $("#artiFoot").height();
+            $(".changeAbout").css("height", changebox);
+
+            var boxheight = $(".changeAbout>div").height();
+            var aboutheight = $("#aboutvideo").height();
+            var videoheight = $("#aboutvideo video").height();
+            $("#aboutvideo video").css("top", (aboutheight / 2) - (videoheight / 2));
+
+            var txtHeight = $("#abouttxt").height();
+            $("#abouttxt").css("top", (boxheight / 2) - (txtHeight / 2));
+
+        });
+
+        //listnav
+        $(function () {
+            $(window).mousemove(function () {
+                if ($(".changeAbout").css("display") == "block") {
+                    $("#leftmenu>div").eq(1).css("backgroundColor", "#aa6710");
+                    $("#leftmenu div div").eq(1).css("backgroundColor", "#3c2517");
+                }
+                else {
+                    $("#leftmenu>div").eq(1).css("backgroundColor", "#3c2517");
+                    $("#leftmenu div div").eq(1).css("backgroundColor", "#f7e1ea");
+                }
+            });
+            $(window).click(function () {
+                if ($(".changeAbout").css("display") == "block") {
+                    $("#leftmenu>div").eq(1).css("backgroundColor", "#aa6710");
+                    $("#leftmenu div div").eq(1).css("backgroundColor", "#3c2517");
+                }
+                else {
+                    $("#leftmenu>div").eq(1).css("backgroundColor", "#3c2517");
+                    $("#leftmenu div div").eq(1).css("backgroundColor", "#f7e1ea");
+                }
+
+                if ($(".changeSingleorigin").css("display") == "block") {
+                    $("#hide>div").eq(1).css("backgroundColor", "#aa6710");
+                    $(".sideLeftMargin>a>div").eq(0).css("backgroundColor", "#3c2517");
+                }
+                else {
+                    $("#hide>div").eq(1).css("backgroundColor", "#3c2517");
+                    $(".sideLeftMargin>a>div").eq(0).css("backgroundColor", "#f7e1ea");
+                }
+
+                if ($(".changeBlended").css("display") == "block") {
+                    $("#hide>div").eq(2).css("backgroundColor", "#aa6710");
+                    $(".sideLeftMargin>a>div").eq(1).css("backgroundColor", "#3c2517");
+                }
+                else {
+                    $("#hide>div").eq(2).css("backgroundColor", "#3c2517");
+                    $(".sideLeftMargin>a>div").eq(1).css("backgroundColor", "#f7e1ea");
+                }
+
+                if ($(".changeColdbrew").css("display") == "block") {
+                    $("#hide>div").eq(3).css("backgroundColor", "#aa6710");
+                    $(".sideLeftMargin>a>div").eq(2).css("backgroundColor", "#3c2517");
+                }
+                else {
+                    $("#hide>div").eq(3).css("backgroundColor", "#3c2517");
+                    $(".sideLeftMargin>a>div").eq(2).css("backgroundColor", "#f7e1ea");
+                }
+
+                if ($(".wholesale").css("display") == "block") {
+                    $("#leftmenu>div").eq(3).css("backgroundColor", "#aa6710");
+                    $(".menucircle").eq(6).css("backgroundColor", "#3c2517");
+                }
+                else {
+                    $("#leftmenu>div").eq(3).css("backgroundColor", "#3c2517");
+                    $(".menucircle").eq(6).css("backgroundColor", "#f7e1ea");
+                }
+            });
+            // about on
+            $("#leftmenu>div").eq(1).click(function () {
+                $(".blackout").css("display", "none");
+                $(".changeAbout").css("display", "block");
+            });
+
+            // single origin on
+            $("#hide>div").eq(1).click(function () {
+                $(".blackout").css("display", "none");
+                $(".changeSingleorigin").css("display", "block");
+                originSingle();
+            });
+
+            // blended on
+            $("#hide>div").eq(2).click(function () {
+                $(".blackout").css("display", "none");
+                $(".changeBlended").css("display", "block");
+                originBlended();
+            });
+
+            // cold brew on
+            $("#hide>div").eq(3).click(function () {
+                $(".blackout").css("display", "none");
+                $(".changeColdbrew").css("display", "block");
+                originColdbrew();
+            });
+
+            // wholesale on
+            $("#leftmenu>div").eq(3).click(function () {
+                $(".blackout").css("display", "none");
+                $(".wholesale").css("display", "block");
+            });
+        });
+
+        // single origin listnav
+        $(function () {
+            var sum = 0;
+            var i;
+            var listnav = $(".listnav div").length;
+            var shoplist = $(".shoplist div").length;
+
+            $(".listnav div").eq(0).click(function () {
+                var soo = 1;
+                for (i = 0; i <= 3; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                originSingle();
+            });
+
+            $(".listnav div").eq(1).click(function () {
+                var soo = 9;
+                for (i = 0; i <= 3; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomSingle();
+            });
+
+            $(".listnav div").eq(2).click(function () {
+                for (i = 0; i <= 3; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomSingle();
+            });
+
+            $(".listnav div").eq(3).click(function () {
+                for (i = 0; i <= 3; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomSingle();
+            });
+
+        });
+
+        // blended listnav
+        $(function () {
+
+
+            var sum = 0;
+            var i;
+            var listnav = $(".listnav div").length;
+            var shoplist = $(".shoplist div").length;
+
+            $(".listnav div").eq(4).click(function () {
+                var soo = 1;
+                for (i = 4; i <= 7; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                originBlended();
+
+            });
+
+            $(".listnav div").eq(5).click(function () {
+                var soo = 9;
+                for (i = 4; i <= 7; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomBlended();
+            });
+
+            $(".listnav div").eq(6).click(function () {
+                for (i = 4; i <= 7; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomBlended();
+            });
+
+            $(".listnav div").eq(7).click(function () {
+                for (i = 4; i <= 7; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomBlended();
+            });
+
+        });
+
+        // cold brew listnav
+        $(function () {
+
+
+            var sum = 0;
+            var i;
+            var listnav = $(".listnav div").length;
+            var shoplist = $(".shoplist div").length;
+
+            $(".listnav div").eq(8).click(function () {
+                var soo = 1;
+                for (i = 8; i <= 11; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                originColdbrew();
+            });
+
+            $(".listnav div").eq(9).click(function () {
+                var soo = 9;
+                for (i = 8; i <= 11; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomColdbrew();
+            });
+
+            $(".listnav div").eq(10).click(function () {
+                for (i = 8; i <= 11; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomColdbrew();
+            });
+
+            $(".listnav div").eq(11).click(function () {
+                for (i = 8; i <= 11; i++) {
+                    $(".listnav div").eq(i).css("backgroundColor", "#f7e1ca");
+                    $(".listnav div").eq(i).css("color", "black");
+                }
+                $(this).css({
+                    "backgroundColor": "#5f5149",
+                    "color": "white"
+                });
+
+                randomColdbrew();
+            });
+
+        });
+
+        // ::::: 이미지, 텍스트 입력 함수 
+
+        var divNum;
+        let txtSingle = [
+                "<p onMouseOver='this.innerHTML=\"콜롬비아 수프리모\"' onMouseOut='this.innerHTML=\"COLOMBIA SUPREMO TOLIMA\"'> COLOMBIA SUPREMO TOLIMA </p> <span> 12,500 원 </span>",
+                "<p onMouseOver='this.innerHTML=\"브라질 산토스 NY2 FC\"' onMouseOut='this.innerHTML=\"BRAZIL SANTOS NY2 FC\"'> BRAZIL SANTOS NY2 FC </p> <span> 9,000 원 </span>",
+                "<p onMouseOver='this.innerHTML=\"브라질 세하도 FC\"' onMouseOut='this.innerHTML=\"BRAZIL CERRADO FC\"'> BRAZIL CERRADO FC </p> <span> 11,000 원 </span>",
+                "<p onMouseOver='this.innerHTML=\"에티오피아 시다모 G2\"' onMouseOut='this.innerHTML=\"ETHIOPIA SIDAMO G2\"'> ETHIOPIA SIDAMO G2 </p> <span> 16,000 원 </span>",
+                "<p onMouseOver='this.innerHTML=\"케냐 오타야 AA\"' onMouseOut='this.innerHTML=\"KENYA OTHAYA AA\"'> KENYA OTHAYA AA </p> <span> 17,000 원 </span>",
+                "<p onMouseOver='this.innerHTML=\"에티오피아 예가체프 G2\"' onMouseOut='this.innerHTML=\"ETHIOPIA YIRGACHEFFE G2\"'> ETHIOPIA YIRGACHEFFE G2 </p> <span> 15,000 원 </span>",
+                "<p onMouseOver='this.innerHTML=\"인도네시아 만델링 G1\"' onMouseOut='this.innerHTML=\"INDONESIA MANDHELING G1\"'> INDONESIA MANDHELING G1 </p> <span> 17,000 원 </span>",
+                "<p onMouseOver='this.innerHTML=\"에티오피아 코케허니 G1\"' onMouseOut='this.innerHTML=\"ETHIOPIA KOKE HONEY G1\"'> ETHIOPIA KOKE HONEY G1 </p> <span> 14,000 원 </span>"
+            ];
+
+        let txtBlended = [
+            "<p onMouseOver='this.innerHTML=\"프리츠 블렌드\"' onMouseOut='this.innerHTML=\"FRITZ BLEND\"'> FRITZ BLEND </p> <span> 23,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"스모키 블렌드\"' onMouseOut='this.innerHTML=\"SMOKY BLEND\"'> SMOKY BLEND </p> <span> 22,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"다크 블렌드\"' onMouseOut='this.innerHTML=\"DARK BLEND\"'> DARK BLEND </p> <span> 22,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"에스프레소 블렌드\"' onMouseOut='this.innerHTML=\"ESPRESSO BLEND\"'> ESPRESSO BLEND </p> <span> 22,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"마일드 블렌드\"' onMouseOut='this.innerHTML=\"MILD BLEND\"'> MILD BLEND </p> <span> 22,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"더치 블렌드\"' onMouseOut='this.innerHTML=\"DUTCH BLEND\"'> DUTCH BLEND </p> <span> 23,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"디카페인 블렌드\"' onMouseOut='this.innerHTML=\"DECAF BLEND\"'> DECAF BLEND </p> <span> 23,000 원</span>",
+            "<p onMouseOver='this.innerHTML=\"아로마 블렌드\"' onMouseOut='this.innerHTML=\"AROMA BLEND\"'> AROMA BLEND </p> <span> 21,000 원 </span>"
+        ];
+
+        let txtColdbrew = [
+            "<p onMouseOver='this.innerHTML=\"콜롬비아 수프리모\"' onMouseOut='this.innerHTML=\"COLOMBIA SUPREMO TOLIMA\"'> COLOMBIA SUPREMO TOLIMA </p> <span> 12,500 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"브라질 산토스 NY2 FC\"' onMouseOut='this.innerHTML=\"BRAZIL SANTOS NY2 FC\"'> BRAZIL SANTOS NY2 FC </p> <span> 9,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"브라질 세하도 FC\"' onMouseOut='this.innerHTML=\"BRAZIL CERRADO FC\"'> BRAZIL CERRADO FC </p> <span> 11,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"에티오피아 시다모 G2\"' onMouseOut='this.innerHTML=\"ETHIOPIA SIDAMO G2\"'> ETHIOPIA SIDAMO G2 </p> <span> 16,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"케냐 오타야 AA\"' onMouseOut='this.innerHTML=\"KENYA OTHAYA AA\"'> KENYA OTHAYA AA </p> <span> 17,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"에티오피아 예가체프 G2\"' onMouseOut='this.innerHTML=\"ETHIOPIA YIRGACHEFFE G2\"'> ETHIOPIA YIRGACHEFFE G2 </p> <span> 15,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"인도네시아 만델링 G1\"' onMouseOut='this.innerHTML=\"INDONESIA MANDHELING G1\"'> INDONESIA MANDHELING G1 </p> <span> 17,000 원 </span>",
+            "<p onMouseOver='this.innerHTML=\"에티오피아 코케허니 G1\"' onMouseOut='this.innerHTML=\"ETHIOPIA KOKE HONEY G1\"'> ETHIOPIA KOKE HONEY G1 </p> <span> 14,000 원 </span>"
+        ];
+
+        function originSingle() {
+            $(".singleList>div").empty();
+            var imgNum = 1;
+            
+            for (divNum = 0; divNum < 8; divNum++) {
+
+                $(".singleList>div").eq(divNum).prepend("<img src='image/product/Single" + imgNum + ".png' alt='Single" + imgNum + "'>").append(txtSingle[divNum]);
+
+                imgNum++;
+            }
+        };
+
+        function originBlended() {
+            $(".blendedList>div").empty();
+            var imgNum = 1;
+            
+            for (divNum = 0; divNum < 8; divNum++) {
+
+                $(".blendedList>div").eq(divNum).prepend("<img src='image/product/Blended" + imgNum + ".png' alt='Blended" + imgNum + "'>").append(txtBlended[divNum]);
+
+                imgNum++;
+            }
+        };
+
+        function originColdbrew() {
+            $(".coldbrewList>div").empty();
+            var imgNum = 1;
+
+            for (divNum = 0; divNum < 8; divNum++) {
+
+                $(".coldbrewList>div").eq(divNum).prepend("<img src='image/product/Coldbrew" + imgNum + ".png' alt='Coldbrew" + imgNum + "'>").append(txtColdbrew[divNum]);
+
+                imgNum++;
+            }
+        };
+
+
+        // ::::: 이미지, 텍스트 랜덤 입력 함수
+
+        function randomSingle() {
+            $(".singleList>div").empty();
+
+            for (divNum = 0; divNum <= 8; divNum++) {
+
+                var ran16 = Math.floor((Math.random() * (16 - 2) + 2));
+                var ran8 = Math.floor(Math.random() * 8);
+
+                $(".singleList>div").eq(divNum).prepend("<img src='image/product/Single" + ran16 + ".png' alt='Single" + divNum + "'>").append(txtSingle[ran8]);
+            }
+        };
+
+        function randomBlended() {
+            $(".blendedList>div").empty();
+
+            for (divNum = 0; divNum <= 8; divNum++) {
+
+                var ran16 = Math.floor((Math.random() * (16 - 2) + 2));
+                var ran8 = Math.floor(Math.random() * 8);
+
+                $(".blendedList>div").eq(divNum).prepend("<img src='image/product/Blended" + ran16 + ".png' alt='Blended" + divNum + "'>").append(txtBlended[ran8]);
+            }
+        };
+
+        function randomColdbrew() {
+            $(".coldbrewList>div").empty();
+            for (divNum = 0; divNum <= 8; divNum++) {
+
+                var ran16 = Math.floor((Math.random() * (16 - 2) + 2));
+                var ran8 = Math.floor(Math.random() * 8);
+
+                $(".coldbrewList>div").eq(divNum).prepend("<img src='image/product/Coldbrew" + ran16 + ".png' alt='Coldbrew" + divNum + "'>").append(txtColdbrew[ran8]);
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div class="headbox1">
+                <a href="#" onclick="location.href = 'http://www.facebook.com'">
+                    <p>facebook</p>
+                </a>
+                <a href="#" onclick="location.href = 'http://www.instagram.com'">
+                    <p>instagram</p>
+                </a>
+                <a href="#" onclick="location.href = 'http://www.kakaopage.com'">
+                    <p>kakaopage</p>
+                </a>
+            </div>
+            <div class="headbox2">
+                <p><a href="#1">FRITZ COMPANY<br><span>COFFEE & BREAD</span></a></p>
+            </div>
+            <div class="headbox3">
+                <a href="#">
+                    <p>log in</p>
+                </a>
+                <a href="#">
+                    <p>sign in</p>
+                </a>
+                <div id="searchbox">
+                    <input type="text" placeholder="search">
+                    <button>
+                        <img src="image/search.png" alt="사진" id="find">
+                    </button>
+                </div>
+            </div>
+        </header>
+        <section>
+            <article id="leftmenu">
+                <div>
+                    <a href="fritz.html">
+                        <div class="menucircle">
+
+                        </div>
+                        <p>
+                            MAIN
+                        </p>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <div class="menucircle">
+
+                        </div>
+                        <p>
+                            ABOUT
+                        </p>
+                    </a>
+                </div>
+                <div id="hide">
+                    <div>
+                        <div class="menucircle none">
+
+                        </div>
+                        <p>
+                            SHOP
+                        </p>
+                    </div>
+                    <div class="sideLeftMargin">
+                        <a href="#">
+                            <div class="menucircle">
+
+                            </div>
+                            <p>
+                                SINGLE ORIGIN
+                            </p>
+                        </a>
+                    </div>
+                    <div class="sideLeftMargin">
+                        <a href="#">
+                            <div class="menucircle">
+
+                            </div>
+                            <p>
+                                BLENDED
+                            </p>
+                        </a>
+                    </div>
+                    <div class="sideLeftMargin">
+                        <a href="#">
+                            <div class="menucircle">
+
+                            </div>
+                            <p>
+                                COLD BREW
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#">
+                        <div class="menucircle">
+
+                        </div>
+                        <p>
+                            WHOLESALE
+                        </p>
+                    </a>
+                </div>
+            </article>
+            <article id="page">
+                <div class="changeView">
+                    <div class="changeAbout blackout">
+                        <div>
+                            <div>
+                                <div id="aboutvideo">
+                                    <video src="multi/main.mp4" muted autoplay></video>
+                                </div>
+                            </div>
+                            <div>
+                                <div id="abouttxt">
+                                    <img src="image/quote.png" alt="사진">
+                                    <br>
+                                    <br>
+                                    <p id="typi"></p>
+                                    <br>
+                                    <img src="image/quote.png" alt="사진">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="changeSingleorigin blackout">
+                        <div class="name">
+                            SINGLE ORIGIN
+                        </div>
+                        <div class="shoplist singleList">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="listnav">
+                            <div>
+                                1
+                            </div>
+                            <div>
+                                2
+                            </div>
+                            <div>
+                                3
+                            </div>
+                            <div>
+                                4
+                            </div>
+                        </div>
+                    </div>
+                    <div class="changeBlended blackout">
+                        <div class="name">
+                            BLENDED
+                        </div>
+                        <div class="shoplist blendedList">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="listnav">
+                            <div>
+                                1
+                            </div>
+                            <div>
+                                2
+                            </div>
+                            <div>
+                                3
+                            </div>
+                            <div>
+                                4
+                            </div>
+                        </div>
+                    </div>
+                    <div class="changeColdbrew blackout">
+                        <div class="name">
+                            COLD BREW
+                        </div>
+                        <div class="shoplist coldbrewList">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="listnav">
+                            <div>
+                                1
+                            </div>
+                            <div>
+                                2
+                            </div>
+                            <div>
+                                3
+                            </div>
+                            <div>
+                                4
+                            </div>
+                        </div>
+                    </div>
+                    <div id="whole" class="wholesale blackout">
+                        <div>
+                            WHOLESALE
+                        </div>
+                        <div>
+                            FRITZ의 원두를 대량 구매하시려면 아래로 문의 주세요.<br>상담 후 무료 샘플과 안내문을 보내 드립니다.
+                        </div>
+                        <div>
+                            <div id="inputbox">
+                                <div>
+                                    <p>
+                                        상호명
+                                    </p>
+                                    <p>
+                                        사업자 번호
+                                    </p>
+                                    <p>
+                                        기타 사항
+                                    </p>
+                                </div>
+                                <div>
+                                    <input type="text" placeholder=" 성함이나 상호명을 입력해 주세요."><br>
+                                    <input type="text" placeholder=" 사업자 번호를 입력해 주세요.">
+                                    <textarea cols="30" rows="10" placeholder=" 문의하실 내용을 입력해 주세요."></textarea>
+                                    <button>
+                                        SEND
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="callbox">
+                            <div id="call">
+                                <div>
+                                    <div>
+                                        <img src="image/tel.png" alt="사진" id="pic1">
+                                    </div>
+                                    <div class="backImg">
+                                        전화 / 문자 문의<br>010 - 1234 - 5678
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <img src="image/mail.png" alt="사진" id="pic2">
+                                    </div>
+                                    <div class="backImg">
+                                        EMAIL 문의<br>FRITZ@fritz.co.kr
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="artiFoot">
+                    <div>
+                        FRITZ COMPANY<br>COFFEE & BREAD
+                    </div>
+                    <div>
+                        서울시 성동구 행당동 | FRITZ.CO.KR<br>02) 1234 - 5678 | 사업자등록번호 : 123 - 321 - 12345 | 대표 : 소지섭
+                    </div>
+                    <div>
+                        카페 운영시간 OPEN - 07 : 30 | CLOSE - 22 : 00
+                    </div>
+                    <div>
+                        배송안내 : 평일 오전 11시 이전 주문건에 한해 당일 배송합니다.
+                    </div>
+                </div>
+            </article>
+        </section>
+        <footer>
+            <p>
+                copyrights ⓒ 2021 All Rights Reserved by Fritz
+            </p>
+        </footer>
+    </div>
+    <script>
+        var typindex = 0;
+        var typtext = "커피 이상의 특별한 경험을            \u00A0\u00A0 소개합니다.";
+
+        function typing() {
+            if (typindex < typtext.length) {
+                document.getElementById("typi").innerHTML += typtext.charAt(typindex);
+                typindex++;
+                setTimeout(typing, 100);
+            }
+        }
+        typing();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+        <link rel="stylesheet" href="css/fritz.css" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/fullpage.css">
+        <link rel="shortcut icon" href="image/coffeecon.ico">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>
+			FRITZ
+		</title>
+		<script src="js/jquery.js"></script>
+		<script>
+			$(function() {
+                // 아티클 사용자 화면크기 비례 높이
+                var x = $(window).height();
+                $("article").css("height",x);
+
+                var mainimgheight = $("#mainimg").height();
+                $("#mainimg").css("top",(x/2)-(mainimgheight/2));
+
+                // 사이드메뉴 위치 지정
+                var y = $("#sidemenubar").height();
+                $("#sidemenubar").css("top",(x/2)-(y/2));
+
+                // 사이드메뉴 베이스 위치 지정
+                var z = $("#sidemenubarbase").height();
+                $("#sidemenubarbase").css("top",(x/2)-(z/2));
+                
+                var a = $("#menubox").height();
+                $("#menubox").css("top",(x/2)-(a/2));
+
+                // 사이드 메뉴바 움직임
+                var menusoo = $("#sidemenubar>a>div").length;
+
+                $("#menubox").mouseenter(function() {
+                    var x = $(window).height();
+                    $("#sidemenubarbase").css("zIndex","-99");
+                    $("#sidemenubarbase").animate({
+                        "top" : (x/2)-(z/2)-40,
+                        "height" : "230px",
+                        "opacity" : "0"
+                    },600);
+                    $("#sidemenubar").animate({"width":"180px"},600);
+                    for ( i = 0 ; i <= menusoo-1 ; i ++ ) {
+                        $("#sidemenubar>a>div").delay(100).eq(i).animate({
+                            "right" : "0px"
+                        });
+                    }
+                });
+
+                $("#menubox").mouseleave(function() {
+                    var x = $(window).height();
+                    for ( i = 0 ; i <= menusoo-1 ; i ++ ) {
+                        $("#sidemenubar>a>div").delay(100).eq(i).animate({
+                            "right" : "-180px"
+                        });
+                    }
+                    $("#sidemenubar").delay(600).animate({"width":"0px"},600);
+                    $("#sidemenubarbase").css("zIndex","99");
+                    $("#sidemenubarbase").delay(500).animate({
+                        "height" : "150px",
+                        "top" : (x/2)-(z/2),
+                        "opacity" : "1"
+                    },600);
+
+                });
+                // 사이드 메뉴바 움직임
+                var art2ImgSize = $(".art2 div img").width();
+                $(".art2 div img").height(art2ImgSize);
+
+                // art3
+                var artwidth3 = $("#art3mainimg").width();
+                $("#art3mainimg").height(artwidth3);
+                $("#art3txtimg").height(artwidth3);
+
+                var single = $(".singlebox").width();
+                $(".singlebox").height(single);
+
+                var art3box = $("#art3box").height();
+                $("#art3mainimg").css("top",(art3box/2)-(artwidth3/2));
+                $("#art3txtimg").css("top",(art3box/2)-(artwidth3/2));
+
+                // art4
+                var artwidth4 = $("#art4mainimg").width();
+                $("#art4mainimg").height(artwidth4);
+                $("#art4txtimg").height(artwidth4);
+
+                var blend = $(".blendbox").width();
+                $(".blendbox").height(blend);
+
+                var art4box = $("#art4box").height();
+                $("#art4mainimg").css("top",(art4box/2)-(artwidth4/2));
+                $("#art4txtimg").css("top",(art4box/2)-(artwidth4/2));
+
+                // art5
+                var artwidth5 = $("#art5mainimg").width();
+                $("#art5mainimg").height(artwidth5);
+                $("#art5txtimg").height(artwidth5);
+
+                var coldbox = $(".coldbox").width();
+                $(".coldbox").height(coldbox);
+
+                var art5box = $("#art5box").height();
+                $("#art5mainimg").css("top",(art5box/2)-(artwidth5/2));
+                $("#art5txtimg").css("top",(art5box/2)-(artwidth5/2));
+
+                var winWidth = $(window).width();
+                var i;
+                if ( winWidth < 2000) {
+                    $("#art3mainimg>p").css("fontSize","1.3vw");
+                    for ( i = 3 ; i <= 5 ; i++ ) {
+                        $("#art"+i+"mainimg>p").css("fontSize","1.3vw");
+                        $("#art"+i+"txtimg>div").eq(0).css({"fontSize" : "1vw", "lineHeight" : "2.5vw"});
+                        $("#art"+i+"txtimg div span").css("fontSize","1.4vw");
+                    }
+                    $(".art2 div").css("fontSize","2vw");
+                    $(".singlebox>p").css("fontSize","1vw");
+                    $(".blendbox>p").css("fontSize","1vw");
+                    $(".coldbox>p").css("fontSize","1vw");
+                }
+                else {
+                    for ( i = 3 ; i <= 5 ; i++ ) {
+                        $("#art"+i+"mainimg>p").css("fontSize","2em");
+                        $("#art"+i+"txtimg>div").eq(0).css({"fontSize" : "1.3em", "lineHeight" : "2.5em"});
+                        $("#art"+i+"txtimg div span").css("fontSize","1.4em");
+                    }
+                    $(".art2 div").css("fontSize","2.5em");
+                    $(".singlebox>p").css("fontSize","1.4em");
+                    $(".blendbox>p").css("fontSize","1.4em");
+                    $(".coldbox>p").css("fontSize","1.4em");
+                }
+			});
+
+            $(window).resize(function() {
+                // 아티클 사용자 화면크기 비례 높이
+                var x = $(window).height();
+                $("article").css("height",x);
+
+                var mainimgheight = $("#mainimg").height();
+                $("#mainimg").css("top",(x/2)-(mainimgheight/2));
+
+                // 사이드메뉴 위치 지정
+                var y = $("#sidemenubar").height();
+                $("#sidemenubar").css("top",(x/2)-(y/2));
+
+                // 사이드메뉴 베이스 위치 지정
+                var z = $("#sidemenubarbase").height();
+                $("#sidemenubarbase").css("top",(x/2)-(z/2));
+
+                var a = $("#menubox").height();
+                $("#menubox").css("top",(x/2)-(a/2));
+
+                var art2ImgSize = $(".art2 div img").width();
+                $(".art2 div img").height(art2ImgSize);
+
+                // art3
+                var artwidth3 = $("#art3mainimg").width();
+                $("#art3mainimg").height(artwidth3);
+                $("#art3txtimg").height(artwidth3);
+
+                var single = $(".singlebox").width();
+                $(".singlebox").height(single);
+
+                var art3box = $("#art3box").height();
+                $("#art3mainimg").css("top",(art3box/2)-(artwidth3/2));
+                $("#art3txtimg").css("top",(art3box/2)-(artwidth3/2));
+
+                // art4
+                var artwidth4 = $("#art4mainimg").width();
+                $("#art4mainimg").height(artwidth4);
+                $("#art4txtimg").height(artwidth4);
+
+                var blend = $(".blendbox").width();
+                $(".blendbox").height(blend);
+
+                var art4box = $("#art4box").height();
+                $("#art4mainimg").css("top",(art4box/2)-(artwidth4/2));
+                $("#art4txtimg").css("top",(art4box/2)-(artwidth4/2));
+
+                // art5
+                var artwidth5 = $("#art5mainimg").width();
+                $("#art5mainimg").height(artwidth5);
+                $("#art5txtimg").height(artwidth5);
+
+                var coldbox = $(".coldbox").width();
+                $(".coldbox").height(coldbox);
+
+                var art5box = $("#art5box").height();
+                $("#art5mainimg").css("top",(art5box/2)-(artwidth5/2));
+                $("#art5txtimg").css("top",(art5box/2)-(artwidth5/2));
+
+                var winWidth = $(window).width();
+                var i;
+                if ( winWidth < 2000) {
+                    $("#art3mainimg>p").css("fontSize","1.3vw");
+                    for ( i = 3 ; i <= 5 ; i++ ) {
+                        $("#art"+i+"mainimg>p").css("fontSize","1.3vw");
+                        $("#art"+i+"txtimg>div").eq(0).css({"fontSize" : "1vw", "lineHeight" : "2.5vw"});
+                        $("#art"+i+"txtimg div span").css("fontSize","1.4vw");
+                    }
+                    $(".art2 div").css("fontSize","2vw");
+                    $(".singlebox>p").css("fontSize","1vw");
+                    $(".blendbox>p").css("fontSize","1vw");
+                    $(".coldbox>p").css("fontSize","1vw");
+                }
+                else {
+                    for ( i = 3 ; i <= 5 ; i++ ) {
+                        $("#art"+i+"mainimg>p").css("fontSize","2em");
+                        $("#art"+i+"txtimg>div").eq(0).css({"fontSize" : "1.3em", "lineHeight" : "2.5em"});
+                        $("#art"+i+"txtimg div span").css("fontSize","1.4em");
+                    }
+                    $(".art2 div").css("fontSize","2.5em");
+                    $(".singlebox>p").css("fontSize","1.4em");
+                    $(".blendbox>p").css("fontSize","1.4em");
+                    $(".coldbox>p").css("fontSize","1.4em");
+                }
+			});
+
+            function hideshow(e) { // 헤더 숨기기
+                var x = screen.height;
+                    if ( e.wheelDelta == -120 ) {
+                        document.querySelector("header").style.top = "-60px";
+                    }
+                    else {
+                        document.querySelector("header").style.top = "0px";
+                    }
+            }
+
+        // 박스 팝업 이벤트
+        window.onload = function () {
+            function boxUnerBottom(evnt, startevent) {
+                var top = evnt.getBoundingClientRect().top;
+                var innerHeight = window.innerHeight;
+                return top > innerHeight + (startevent || 0);
+            }
+            function scrollEvent() {
+                var elmt = document.querySelectorAll(".scrollevnt");
+                elmt.forEach(function (evnt) {
+                    if (boxUnerBottom(evnt, -60)) {
+                        evnt.style.opacity = "0";
+                        evnt.style.transform = "translateY(120px)";
+                    }
+                    else {
+                        evnt.style.opacity = "1";
+                        evnt.style.transform = "translateY(0px)";
+                    }
+                });
+            }
+            window.addEventListener("scroll", scrollEvent);
+        };
+
+        // 사이드 메뉴 바 색 변경
+        $(window).scroll(function() {
+                var ha = $(window).scrollTop();
+                var sectionClass = $(".section");
+                var circlecolor = $("#sidemenubarbase>div");
+                var i = 0;
+                    if ( ha == sectionClass.eq(0).offset().top ) { // 아티클1
+                        for ( i = 0 ; i <= circlecolor.length-1 ; i ++ ) {
+                            circlecolor.eq(i).css("backgroundColor","#5f5149");
+                        }
+                        circlecolor.eq(0).css("backgroundColor","#aa6710");
+                        $("header").css("top","0px");
+                    }
+                    else if ( ha == sectionClass.eq(1).offset().top ) { // 아티클2
+                        for ( i = 0 ; i <= circlecolor.length-1 ; i ++ ) {
+                            circlecolor.eq(i).css("backgroundColor","#5f5149");
+                        }
+                        circlecolor.eq(1).css("backgroundColor","#aa6710");
+                    }
+                    else if ( ha == sectionClass.eq(2).offset().top ) { // 아티클3
+                        for ( i = 0 ; i <= circlecolor.length-1 ; i ++ ) {
+                            circlecolor.eq(i).css("backgroundColor","#5f5149");
+                        }
+                        circlecolor.eq(2).css("backgroundColor","#aa6710");
+                    }
+                    else if ( ha == sectionClass.eq(3).offset().top ) { // 아티클4
+                        for ( i = 0 ; i <= circlecolor.length-1 ; i ++ ) {
+                            circlecolor.eq(i).css("backgroundColor","#5f5149");
+                        }
+                        circlecolor.eq(3).css("backgroundColor","#aa6710");
+                    }
+                    else if ( ha == sectionClass.eq(4).offset().top ) { // 아티클5
+                        for ( i = 0 ; i <= circlecolor.length-1 ; i ++ ) {
+                            circlecolor.eq(i).css("backgroundColor","#5f5149");
+                        }
+                        circlecolor.eq(4).css("backgroundColor","#aa6710");
+                    }
+                    else if ( ha == sectionClass.eq(5).offset().top ) { // 아티클6
+                        for ( i = 0 ; i <= circlecolor.length-1 ; i ++ ) {
+                            circlecolor.eq(i).css("backgroundColor","#5f5149");
+                        }
+                        circlecolor.eq(5).css("backgroundColor","#aa6710");
+                        $("header").css("top","-60px");
+                    }
+            });
+
+		</script>
+	</head>
+	<body onwheel = "hideshow(event);">
+        <div id="menubox">
+            <div id="sidemenubarbase">
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <div id="sidemenubar"> <!-- 사이드 메뉴 -->
+                <a href="#">
+                    <div id="moveto">
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            MAIN
+                        </p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="movego">
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            ABOUT
+                        </p>
+                    </div>
+                </a>
+                <a href="fritz_shop.html">
+                    <div>
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            SHOP
+                        </p>
+                    </div>
+                </a>
+                <a href="#f">
+                    <div>
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            WHOLESALE
+                        </p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="movelast">
+                        <div>
+                            <!-- 사이드메뉴 동그라미 -->
+                        </div>
+                        <p>
+                            CONTACT US
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="container">
+            <header>
+                <div class="headbox1">
+                    <a href="#" onclick="location.href = 'http://www.facebook.com'"><p>facebook</p></a>
+                    <a href="#" onclick="location.href = 'http://www.instagram.com'"><p>instargram</p></a>
+                    <a href="#" onclick="location.href = 'http://www.kakaopage.com'"><p>kakaopage</p></a>
+                </div>
+                <div class="headbox2">
+                    <p><a href="#1">FRITZ COMPANY<br><span>COFFEE & BREAD</span></a></p>
+                </div>
+                <div class="headbox3">
+                    <a href="#"><p>log in</p></a>
+                    <a href="#"><p>sign in</p></a>
+                    <div id="searchbox">
+                        <input type="text" placeholder="search">
+                        <button>
+                            <img src="image/search.png" alt="사진" id="find">
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <div id="fullpage">
+                <div>
+                    <section>
+                        <article class="art1 section active"> <!--1번째 아티클 사진-->
+                            <img src="image/movecoffee.gif" alt="사진" id="mainimg">
+                        </article>
+                        <article class="art2 section active" id="go2"> <!--2번째 아티클 ABOUT-->
+                            <video src="multi/main.mp4" data-autoplay muted class="scrollevnt">
+
+                            </video>
+                            <div class="scrollevnt">
+                                <img src="image/quote.png" alt="사진"><br>
+                                <p>커피 이상의 특별한<br>경험을 소개합니다</p><br>
+                                <img src="image/quote.png" alt="사진">
+                            </div>
+                        </article>
+                        <article class="art3 section active" id="main"> <!--3번째 아티클 single origin-->
+                            <div id="art3box" class="scrollevnt">
+                                <div id="art3mainimg">
+                                    <img src="image/product/Single1.png" alt="사진">
+                                    <p>
+                                        COLOMBIA<br>SUPREMO TOLIMA
+                                    </p>
+                                    <p>
+                                        \ 12,500
+                                    </p>
+                                    <div id="backcolor">
+
+                                    </div>
+                                </div>
+                                <div id="art3txtimg">
+                                    <div>
+                                        <p><span>SINGLE ORIGIN</span><br>고급 품종의 단일 원두만을 사용하여 각 원두 고유의 개성을 그대로 느낄 수 있습니다.</p>
+                                        <a href="fritz_shop.html">VIEW MORE</a>
+                                    </div>
+                                    <div>
+                                        <div class="singlebox singlebox1">
+                                            <img src="image/product/Single2.png" alt="사진">
+                                            <p>
+                                                ETHIOPIA<br>YIRGACHEFFE G2
+                                            </p>
+                                            <p>
+                                                \ 15,000
+                                            </p>
+                                            <div class="backcolor">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="singlebox singlebox2">
+                                            <img src="image/product/Single3.png" alt="사진">
+                                            <p>
+                                                BRAZIL<br>SANTOS NY2FC
+                                            </p>
+                                            <p>
+                                                \ 19,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                        <div class="singlebox singlebox3">
+                                            <img src="image/product/Single4.png" alt="사진">
+                                            <p>
+                                                INDONESIA<br>MANDHELING G1
+                                            </p>
+                                            <p>
+                                                \ 17,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                        <div class="singlebox singlebox4">
+                                            <img src="image/product/Single5.png" alt="사진">
+                                            <p>
+                                                BRAZIL<br>CERRADO FC
+                                            </p>
+                                            <p>
+                                                \ 11,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="art4 section active"> <!--4번째 아티클 blended-->
+                            <div id="art4box" class="scrollevnt">
+                                <div id="art4mainimg">
+                                    <img src="image/product/Blended1.png" alt="사진">
+                                    <p>
+                                        FRITZ BLEND
+                                    </p>
+                                    <p>
+                                        \ 23,000
+                                    </p>
+                                    <div id="backcolor">
+
+                                    </div>
+                                </div>
+                                <div id="art4txtimg">
+                                    <div>
+                                        <p><span>BLENDED</span><br>각 나라, 지역에서 생산된 원두의 특성을 조합하여 프리츠만의 특색있는 풍미를 제공합니다.</p>
+                                        <a href="fritz_shop.html">VIEW MORE</a>
+                                    </div>
+                                    <div>
+                                        <div class="blendbox blendbox1">
+                                            <img src="image/product/Blended2.png" alt="사진">
+                                            <p>
+                                                DARK BLEND
+                                            </p>
+                                            <p>
+                                                \ 22,000
+                                            </p>
+                                            <div class="backcolor">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="blendbox blendbox2">
+                                            <img src="image/product/Blended3.png" alt="사진">
+                                            <p>
+                                                ESPRESSO BLEND
+                                            </p>
+                                            <p>
+                                                \ 22,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                        <div class="blendbox blendbox3">
+                                            <img src="image/product/Blended4.png" alt="사진">
+                                            <p>
+                                                SMOKY BLEND
+                                            </p>
+                                            <p>
+                                                \ 22,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                        <div class="blendbox blendbox4">
+                                            <img src="image/product/Blended5.png" alt="사진">
+                                            <p>
+                                                AROMA BLEND
+                                            <p>
+                                                \ 21,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="art5 section active"> <!--5번째 아티클 cold brew-->
+                            <div id="art5box" class="scrollevnt">
+                                <div id="art5mainimg">
+                                    <img src="image/product/Coldbrew1.png" alt="사진">
+                                    <p>
+                                        COLOMBIA<br>SUPREMO
+                                    </p>
+                                    <p>
+                                        \ 11,000
+                                    </p>
+                                    <div id="backcolor">
+
+                                    </div>
+                                </div>
+                                <div id="art5txtimg">
+                                    <div>
+                                        <p><span>COLD BREW</span><br>찬물로 장시간 추출하여 쓴맛이 보다 적고 부드러우며 원두 고유의 맛과 향을 느낄 수 있습니다.</p>
+                                        <a href="fritz_shop.html">VIEW MORE</a>
+                                    </div>
+                                    <div>
+                                        <div class="coldbox coldbox1">
+                                            <img src="image/product/Coldbrew2.png" alt="사진">
+                                            <p>
+                                                KENYA<br>OTHAYA AA
+                                            </p>
+                                            <p>
+                                                \ 17,000
+                                            </p>
+                                            <div class="backcolor">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="coldbox coldbox2">
+                                            <img src="image/product/Coldbrew3.png" alt="사진">
+                                            <p>
+                                                ETHIOPIA<br>SIDAMO G2
+                                            </p>
+                                            <p>
+                                                \ 16,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                        <div class="coldbox coldbox3">
+                                            <img src="image/product/Coldbrew4.png" alt="사진">
+                                            <p>
+                                                ETHIOPIA<br>KOKE HONEY G1
+                                            </p>
+                                            <p>
+                                                \ 14,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                        <div class="coldbox coldbox4">
+                                            <img src="image/product/Coldbrew5.png" alt="사진">
+                                            <p>
+                                                BRAZIL<br>CERRADO FC
+                                            <p>
+                                                \ 11,000
+                                            </p>
+                                            <div class="backcolor">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="art6 section active"> <!--6번째 아티클 contact us-->
+                            <p class="scrollevnt"><span>FRITZ</span><br>THE BEST CHOICE<br>OF YOUR COFFEE LIFE</p>
+                            <div class="scrollevnt">
+                                <div>
+                                    <div>
+                                        <h3 class="named">FRITZ COMPANY</h3>    
+                                        <p class="named">COFFEE & BREAD</p><br>
+                                        <p>서울시 성동구 행당동 123<br>02) 1234 - 5678<br>FRITZ@FRITZ.co.kr<br>사업자등록번호 : 123-321-12345<br>대표 : 소지섭</p>
+                                    </div>
+                                    <div>
+                                        <p><span class="named">카페 운영시간</span><br>OPEN : 07 : 30 | CLOSE : 22 : 00</p>
+                                        <p><span class="named">배송안내</span><br>금요일 11시 이전 주문건에 한해 당일 배송합니다.</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="named">WHOLESALE</h3>
+                                        <p>프리츠가 당신의 사업 발전을 응원합니다.<br>프리츠커피 도매에 관한 정보가 궁금하시면<br>WHOLESALE 페이지에 문의해 보세요.</p>
+                                        <div id="wholesalebox">
+                                            <button id="wholesale">
+                                                WHOLESALE 문의
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>Copyrights@All Rights Reserved by Fritz</p>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/fullpage.js"></script>
+        <script type="text/javascript">
+            var myFullpage = new fullpage('#fullpage', {
+                licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+                verticalCentered: false,
+                scrollingSpeed : 1000,
+                anchors : ['firstPage','secondPage','thirdPage','fourPage','fivePage', 'lastPage']
+            });
+
+            $(document).on("click", "#moveto", function() {
+                fullpage_api.moveTo("firstPage");
+            });
+
+            $(document).on("click", "#movego", function() {
+                fullpage_api.moveTo("secondPage");
+            });
+
+            $(document).on("click", "#movelast", function() {
+                fullpage_api.moveTo("lastPage");
+            });
+        </script>
+	</body>
+</html>
